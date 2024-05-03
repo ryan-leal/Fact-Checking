@@ -3,13 +3,13 @@ import syntatic
 import semantic
 
 def main():
-    inputText = 'A paraíba é o estado do Nordeste que mais ampliou sua rede obstetrícia' 
+    inputText = 'A paraíba é o estado do Nordeste que mais ampliou sua rede obstetrícia.' 
     print('[MAIN] Calling Lexic...')
-    lexic.lexic(inputText)
+    tokens = lexic.lexic(inputText)
     print('[MAIN] Calling Syntatic...')
-    syntatic.syntatic()
+    sintagmaNominal, sintagmaVerbal  = syntatic.syntatic(tokens)
     print('[MAIN] Calling Semantic...')
-    semantic.semantic()
+    semantic.semantic(sintagmaNominal, sintagmaVerbal)
     
 
 if __name__ == "__main__":
