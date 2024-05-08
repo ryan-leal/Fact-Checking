@@ -4,7 +4,7 @@ import semantic
 
 
 def main():
-    inputText = 'A gasolina acabou no meio da viagem.' 
+    inputText = 'A Paraíba é o estado do Nordeste que mais ampliou sua rede obstetrícia.' 
     print('[MAIN] Calling Lexic...')
     tokens = lexic.lexic(inputText)
     print('[MAIN] Calling Syntatic...')
