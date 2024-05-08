@@ -2,14 +2,15 @@ import lexic
 import syntatic
 import semantic
 
+
 def main():
-    inputText = 'A paraíba é o estado do Nordeste que mais ampliou sua rede obstetrícia.' 
+    inputText = 'A gasolina acabou no meio da viagem.' 
     print('[MAIN] Calling Lexic...')
     tokens = lexic.lexic(inputText)
     print('[MAIN] Calling Syntatic...')
-    sintagmaNominal, sintagmaVerbal  = syntatic.syntatic(tokens)
+    sintagmaNominal, sintagmaVerbal, verbList, nounList  = syntatic.syntatic(tokens)
     print('[MAIN] Calling Semantic...')
-    semantic.semantic(sintagmaNominal, sintagmaVerbal)
+    semantic.semantic(sintagmaNominal, sintagmaVerbal,verbList, nounList)
     
 
 if __name__ == "__main__":

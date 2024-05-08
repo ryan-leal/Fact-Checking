@@ -66,13 +66,16 @@ def nucleoNominal():
 
     if token[1] in nucleo:
         print('[SYN] found ' + token[0] + ': ' + token[1] + ' in nucleoNominal')
+        if token[1] == 'NOUN':
+            nounList.append(token[0])
+            print(nounList[0])
         token = analyzer.next()
         return
     else:
         print('[SYN] ERROR: Expecting NON, PROPN or PRON, found ' + token[0] + ': ' + token[1])
 
 def sintagmaNominal():
-    global analyzer, token
+    global analyzer, token, nounList
 
     if token[1] == 'DET':
         print('[SYN] found DET ' + token[0] + ': ' + token[1] + ' in sintagmaNominal')
@@ -100,10 +103,12 @@ def complementoVerbal():
     
 
 def sintagmaVerbal():
-    global analyzer, token, sintVList, sintNList
+    global analyzer, token, sintVList, sintNList, verbList
 
     if token[1] == 'VERB' or token[1] == 'AUX':
         print('[SYN] found ' + token[0] + ': ' + token[1] + ' in sintagmaVerbal')
+        if(token[1]=='VERB'):
+            verbList.append(token[0])
         token = analyzer.next()
         complementoVerbal()
     else:
@@ -153,13 +158,15 @@ def texto():
 
 def syntatic(tokenList):
     # Instance of tokenAnalyzer to return next token using token list from lexer
-    global analyzer, token, sintagmaVList, sintagmaNList
+    global analyzer, token, sintagmaVList, sintagmaNList, verbList, nounList
     analyzer = tokenAnalyzer(tokenList)
     sintagmaVList = []
     sintagmaNList = []
+    verbList= []
+    nounList = []
     
     texto()
 
     print('[SYN] Exiting Syntatic with Sintagma Nominal and Sintagma Verbal...')
-    return sintagmaNList, sintagmaVList
+    return sintagmaNList, sintagmaVList, verbList, nounList
     
